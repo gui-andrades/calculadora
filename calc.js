@@ -1,7 +1,7 @@
-var firstInput=-1.0
-var secondInput=-1.0
+var firstInput=0
+var secondInput=0
 var calcType=-1
-var result=-1.0
+var result=-1
 var lastWasEquals=false
 var lastWasOp=false
 
@@ -17,24 +17,36 @@ function decideOperation(type){
     lastWasOp=true
 }
 
+function calc(ct, n1, n2){
+    if (ct==1){
+        return (n1/n2)
+    }
+    if (ct==2){
+        return (n1*n2)
+    }
+    if (ct==3){
+        return (n1-n2)
+    }
+    if (ct==4){
+        return (n1+n2)
+    }
+}
+
 function equals(){
+    if(lastWasEquals){
+        firstInput=result
+        result = calc(calcType,firstInput,secondInput)
+        document.getElementById('display').value=result
+        return
+    }
     secondInput=parseFloat(document.getElementById('display').value)
-    if (calcType==1){
-        result=firstInput/secondInput
+    if (calcType==-1){
+        return
     }
-    if (calcType==2){
-        result=firstInput*secondInput
-    }
-    if (calcType==3){
-        result=firstInput-secondInput
-    }
-    if (calcType==4){
-        result=firstInput+secondInput
-    }
+    result = calc(calcType,firstInput,secondInput)
     document.getElementById('display').value=result
     lastWasEquals=true
     lastWasOp=false
-    calcType=-1
 }
 
 function type(val){
@@ -44,9 +56,11 @@ function type(val){
     }
     if(lastWasEquals){
         lastWasEquals=false
-        if(val != '.'){
-            clean()
-        }
+        result=-1
+        firstInput=0
+        secondInput=0
+        calcType=-1
+        clean()
     }
     document.getElementById('display').value+=val
 }
