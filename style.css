@@ -19,17 +19,24 @@ body{
 }
 
 .display{
-    margin: 0 -10px;
+    width: 100%;
     height: 50px;
     background-color: #606060;
-    border-radius: 10px;
     text-align: right;
     font-size: 1.5em;
     color: white;
-    align-items: center;
+    margin: 0 5px;
     margin-bottom: 20px;
+    padding-right: 10px;
+    border-radius: 10px;
     border-top: 2px solid #282828;
     border-left: 3px solid #282828;
+    border-bottom: none;
+    border-right: none;
+}
+
+::placeholder{
+    color: #ddd;
 }
 
 .botcol{
