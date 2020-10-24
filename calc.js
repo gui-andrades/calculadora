@@ -1,7 +1,7 @@
-var firstInput=-1.0
-var secondInput=-1.0
+var firstInput=0
+var secondInput=0
 var calcType=-1
-var result=-1.0
+var result=-1
 var lastWasEquals=false
 var lastWasOp=false
 
@@ -31,9 +31,15 @@ function equals(){
     if (calcType==4){
         result=firstInput+secondInput
     }
+    if (calcType==-1){
+        return
+    }
     document.getElementById('display').value=result
     lastWasEquals=true
     lastWasOp=false
+    result=-1
+    firstInput=0
+    secondInput=0
     calcType=-1
 }
 
