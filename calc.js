@@ -33,6 +33,9 @@ function calc(ct, n1, n2){
 }
 
 function equals(){
+    if (calcType==-1){
+        return
+    }
     if(lastWasEquals){
         firstInput=result
         result = calc(calcType,firstInput,secondInput)
@@ -40,9 +43,6 @@ function equals(){
         return
     }
     secondInput=parseFloat(document.getElementById('display').value)
-    if (calcType==-1){
-        return
-    }
     result = calc(calcType,firstInput,secondInput)
     document.getElementById('display').value=result
     lastWasEquals=true
